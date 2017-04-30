@@ -24,16 +24,18 @@ $( document ).ready(function() {
 
 $('#next_button').click(function(){
     var selected_option = ($("input[name=option_choice]:checked","#options_form").val());
-    if(parseInt(selected_option) === question_array[question_number].correct_answer){
-        user_data.score++;
-        alert("Acertou Miseravi!!!");
-    }
-    question_number++;
-    if(question_number === question_array.length){
-        alert("Parabéns "+ user_data.name + "\nVocê terminou com " + user_data.score + " pontos!");
-    }
-    else{
-        send_question(question_array[question_number]);
+    if(selected_option) {
+        if (parseInt(selected_option) === question_array[question_number].correct_answer) {
+            user_data.score++;
+            alert("Acertou Miseravi!!!");
+        }
+        question_number++;
+        if (question_number === question_array.length) {
+            alert("Parabéns " + user_data.name + "\nVocê terminou com " + user_data.score + " pontos!");
+        }
+        else {
+            send_question(question_array[question_number]);
+        }
     }
 });
 
